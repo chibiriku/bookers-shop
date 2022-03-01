@@ -5,20 +5,34 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+# <bookers shop>
 
-* System dependencies
+## サイト概要
+<様々なユーザーと感想、意見を交換できるうえに、その本を購入することができる。>
 
-* Configuration
+### サイトテーマ
+<本の購入、本を読んだ感想のシェア>
 
-* Database creation
+### テーマを選んだ理由
+<自分が今まで習ったことを全部発揮したいと思い、このテーマを選びました。>
 
-* Database initialization
+### ターゲットユーザ
+<本が好きな人や、本を読みたいけどどれを購入しようか悩んでいる方>
 
-* How to run the test suite
+### 主な利用シーン
+<本を読みたいが、どれを買おうか迷っている人や、感想の共有をしたい時など。>
 
-* Services (job queues, cache servers, search engines, etc.)
+## 設計書
+<...>
 
-* Deployment instructions
+## チャレンジ要素一覧
+<https://docs.google.com/spreadsheets/d/1rIDiXPSoBDNnRf-gbWLX3xhe4bSmF4GyOjXV0R2cGFQ/edit#gid=0>
 
-* ...
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+
+## 使用素材
