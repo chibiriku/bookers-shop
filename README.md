@@ -1,24 +1,31 @@
-# README
+# <bookers shop>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+様々なユーザーと感想、意見を交換できるうえに、その本を購入することができる。近年コロナで外出が怖いと感じる方々がほとんどの割合を占めていると思う。そんな方々に向けて家でも楽しめる読書という娯楽を多くの方に提供できる本専用のショッピングサイト。その為に、ネットで購入できるという手軽さ、読書をしたことがないような人にも興味を持ってもらえるようなコメント機能、自分の好きなジャンルの本をすぐに探せる検索機能といったような、本を読んだことのない人にも手軽に利用できるサイトになっている。
 
-Things you may want to cover:
+### サイトテーマ
+本の購入、本を読んだ感想のシェア
 
-* Ruby version
+### テーマを選んだ理由
+コロナ渦で近年、家でできる娯楽の需要が高まってるため、読書のショッピングサイトはとても需要があるのではないかと考えた。かくいう私も最近読書をする機会が増えたので、自分であったら便利だなと思ういいねの数でのランキング、新着順などを入れた本専用のecサイトを作りたっかたため。
 
-* System dependencies
+### ターゲットユーザ
+本が好きな人や本を読みたいけどどれを購入しようか悩んでいる方や、本を読んだことのない人。また、良い本を探したい人、本の評判を見てから購入を検討したい人。
 
-* Configuration
+### 主な利用シーン
+本を読みたいが、どれを買おうか迷っている人や、感想の共有をしたい時など。
 
-* Database creation
+## 設計書
 
-* Database initialization
 
-* How to run the test suite
+## チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1rIDiXPSoBDNnRf-gbWLX3xhe4bSmF4GyOjXV0R2cGFQ/edit#gid=0
 
-* Services (job queues, cache servers, search engines, etc.)
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Deployment instructions
 
-* ...
