@@ -1,0 +1,28 @@
+<% if @book.image_id.attached? %>
+  <%= image_tag @book.image_id, size: "200x200" %>
+<% else %>
+  <%= image_tag 'no_image', size: "200x200" %>
+<% end %>
+
+<p>タイトル</p>
+<%= @book.name %>
+
+<p>作者</p>
+<%= @book.author %>
+
+<p>あらすじ</p>
+<%= @book.synopsis %>
+
+<p>ジャンル</p>
+<%= @book.genre.name %>
+
+<p>値段</p>
+<%= @book.price.to_s(:delimited) %>
+
+<%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
+    <%= f.hidden_field :item_id, :value => @book.id.to_s %>
+  <p>数量
+    <%= f.select :amount, *[1..10] %>
+  </p>
+    <%= f.submit 'カートに入れる', class: "btn btn-success" %>
+<% end %>

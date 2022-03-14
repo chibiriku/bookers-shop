@@ -3,6 +3,7 @@ class Book < ApplicationRecord
   has_one_attached :image_id
 
   belongs_to :genre
+  has_many :cart_items, dependent: :destroy
 
   def get_image
     unless image_id.attached?
