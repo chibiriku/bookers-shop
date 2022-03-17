@@ -1,0 +1,21 @@
+<h1>本の新規登録</h1>
+<%= form_with model: @book, url: admins_books_path, method: :post, local: true do |f| %>
+  <p>イメージ画像</p>
+  <%= f.file_field :image_id, accept: "image/*" %>
+  <p>本のタイトル</p>
+  <%= f.text_field :name %>
+  <p>作者</p>
+  <%= f.text_field :author %>
+  <p>本のあらすじ</p>
+  <%= f.text_area :synopsis %>
+  <p>値段</p>
+  <%= f.number_field :price %>
+  <p>ジャンル</p>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+  <p>販売ステータス</p>
+  <%= f.radio_button:is_active, true %>
+  <%= f.label:"販売中" %>
+  <%= f.radio_button:is_active, false %>
+  <%= f.label:"販売停止" %>
+  <%= f.submit"投稿" %>
+<% end %>
