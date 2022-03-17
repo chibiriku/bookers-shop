@@ -20,7 +20,7 @@
 <%= @book.price.to_s(:delimited) %>
 
 <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
-    <%= f.hidden_field :item_id, :value => @book.id.to_s %>
+    <%= f.hidden_field :book_id, :value => @book.id.to_s %>
   <p>数量
     <%= f.select :amount, *[1..10] %>
   </p>

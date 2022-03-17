@@ -4,7 +4,7 @@ class CartItem < ApplicationRecord
 
   # 小計
   def subtotal
-    book.add_price * amount
+    book.price * amount
   end
 
 end
