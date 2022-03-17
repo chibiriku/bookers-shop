@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :data_pages
-  namespace :public do
-    get 'books/index'
-    get 'books/show'
-  end
   root to: "homes#top"
 
 
@@ -16,9 +11,12 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :cart_items, only:[:index, :create, :update, :destroy]
     resources :books, only:[:index, :show]
+    resources :orders, only:[:index,:new,:show,:create]
   end
 
   delete '/cart_items', to: 'public/cart_items#destroy_all',as: 'all_destroy'
+  post '/confirm', to: 'public/orders#confirm',as: 'confirm'
+  get '/thanks', to: 'public/orders#thanks',as: 'thanks'
 
 # 管理者用
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

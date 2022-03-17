@@ -35,10 +35,11 @@
     <td>
       <%= link_to "削除する", cart_item_path(cart_item), method: :delete	%>
     </td><br>
-    <% total_price +=cart_item.subtotal %>
+    <% total_price += cart_item.subtotal %>
   </tbody>
   <% end %>
   </table>
-  <%= link_to "買い物を続ける",root_path %>
+  <%= link_to "買い物を続ける", root_path %>
   <p>合計</p>
   <%= total_price %>
+  <%= link_to "注文する", new_order_path	%>
