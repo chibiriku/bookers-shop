@@ -1,0 +1,9 @@
+<%= form_with model: @address, url: address_path, method: :patch do |f| %>
+  <p>郵便番号（ハイフンなし）</p>
+  <%= f.text_field :postal_code, class: "form-control" %>
+  <p>住所</p>
+  <%= f.text_area :address, class: "form-control" %>
+  <p>宛名</p>
+  <%= f.text_field :name, class: "form-control" %>
+  <%= f.submit '更新', class: "btn btn-success" %>
+<% end %>

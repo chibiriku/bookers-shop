@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
   root to: "homes#top"
 
-
-
   # 顧客用
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
@@ -13,6 +11,7 @@ Rails.application.routes.draw do
     resources :cart_items, only:[:index, :create, :update, :destroy]
     resources :books, only:[:index, :show]
     resources :orders, only:[:index,:new,:show,:create]
+    resources :addresses, only:[:index,:edit,:update,:destroy,:create]
   end
 
   delete '/cart_items', to: 'public/cart_items#destroy_all',as: 'all_destroy'
