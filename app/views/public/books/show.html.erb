@@ -19,6 +19,20 @@
 <p>値段</p>
 <%= @book.price.to_s(:delimited) %>
 
+<% if @book.favorited_by?(current_customer) %>
+    <p>
+      <%= link_to admins_book_favorites(@book), method: :delete do %>
+        ♥<%= @book.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to admins_book_favorites(@book), method: :post do %>
+        ♡<%= @book.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
+
 <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
     <%= f.hidden_field :book_id, :value => @book.id.to_s %>
   <p>数量
