@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :books, only:[:index,:show,:edit,:new,:update,:create] do
       resource :favorites, only: [:create, :destroy]
+      resources :boook_comments, only: [:create]
     end
     resources :genres, only:[:index,:edit,:update,:create]
   end

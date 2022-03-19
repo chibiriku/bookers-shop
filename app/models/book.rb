@@ -6,6 +6,7 @@ class Book < ApplicationRecord
   belongs_to :customer
   has_many :cart_items, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :book_comments, dependent: :destroy
 
   def get_image
     unless image_id.attached?

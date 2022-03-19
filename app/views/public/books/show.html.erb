@@ -19,19 +19,34 @@
 <p>値段</p>
 <%= @book.price.to_s(:delimited) %>
 
-<% if @book.favorited_by?(current_customer) %>
-    <p>
-      <%= link_to admins_book_favorites(@book), method: :delete do %>
-        ♥<%= @book.favorites.count %> いいね
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to admins_book_favorites(@book), method: :post do %>
-        ♡<%= @book.favorites.count %> いいね
-      <% end %>
-    </p>
+<div>
+  <p>コメント件数：<%= @book.book_comments.count %></p>
+  <% @book.book_comments.each do |book_comment| %>
+    <p><%= image_tag book_comment.custome.get_profile_image(100,100) %></p>
+    <%= book_comment.customer.name %>
+    <%= book_comment.created_at.strftime('%Y/%m/%d') %><%= book_comment.comment %>
   <% end %>
+</div>
+<div>
+  <%= form_with model: [@book, @book_comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>
+
+<!--<%# if @book.favorited_by?(current_customer) %>-->
+<!--    <p>-->
+<!--      <%#= link_to admins_book_favorites(@book), method: :delete do %>-->
+<!--        ♥<%#= @book.favorites.count %> いいね-->
+<!--      <%# end %>-->
+<!--    </p>-->
+<!--    <#% else %>-->
+<!--    <p>-->
+<!--      <%#= link_to admins_book_favorites(@book), method: :post do %>-->
+<!--        ♡<%#= @book.favorites.count %> いいね-->
+<!--      <%# end %>-->
+<!--    </p>-->
+<!--  <%# end %>-->
 
 <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
     <%= f.hidden_field :book_id, :value => @book.id.to_s %>
