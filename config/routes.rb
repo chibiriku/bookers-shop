@@ -9,7 +9,10 @@ Rails.application.routes.draw do
 }
   scope module: :public do
     resources :cart_items, only:[:index, :create, :update, :destroy]
-    resources :books, only:[:index, :show]
+    resources :books, only:[:index, :show] do
+      resources :book_comments, only: [:create, :destro]
+      resources :favorites, only: [:create, :destroy]
+    end
     resources :orders, only:[:index,:new,:show,:create]
     resources :addresses, only:[:index,:edit,:update,:destroy,:create]
   end
@@ -24,10 +27,7 @@ Rails.application.routes.draw do
 }
 
   namespace :admins do
-    resources :books, only:[:index,:show,:edit,:new,:update,:create] do
-      resource :favorites, only: [:create, :destroy]
-      resources :boook_comments, only: [:create]
-    end
+    resources :books, only:[:index,:show,:edit,:new,:update,:create]
     resources :genres, only:[:index,:edit,:update,:create]
   end
 
