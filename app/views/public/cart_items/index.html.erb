@@ -1,0 +1,45 @@
+<h2>ショッピングカート</h2>
+<%= link_to all_destroy_path,method: :delete do %>
+ カートを空にする
+<% end %>
+
+ <table>
+  <thead>
+    <tr>
+       <th>本のタイトル</th>
+        <th>単価</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th></th>
+    </tr>
+  </thead>
+  <% total_price=0 %>
+  <% @cart_items.each do |cart_item| %>
+  <tbody>
+    <td>
+      <%= image_tag cart_item.book.get_image, size: "30x30" %>
+      <%= cart_item.book.name %>
+    </td>
+    <td>
+      <%= cart_item.book.price.to_s(:delimited) %>
+    </td>
+    <td>
+      <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch, local:true do |f| %>
+        <%= f.select:amount,*[1..10] %>
+        <%= f.submit "変更" %>
+      <% end %>
+    </td>
+    <td>
+      <%= cart_item.subtotal.to_s(:delimited) %>
+    </td>
+    <td>
+      <%= link_to "削除する", cart_item_path(cart_item), method: :delete	%>
+    </td><br>
+    <% total_price += cart_item.subtotal %>
+  </tbody>
+  <% end %>
+  </table>
+  <%= link_to "買い物を続ける", root_path %>
+  <p>合計</p>
+  <%= total_price %>
+  <%= link_to "注文する", new_order_path	%>

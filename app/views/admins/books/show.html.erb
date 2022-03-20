@@ -1,0 +1,29 @@
+<% if @book.image_id.attached? %>
+  <%= image_tag @book.image_id, size: "200x200" %>
+<% else %>
+  <%= image_tag 'no_image', size: "200x200" %>
+<% end %>
+
+<p>タイトル</p>
+<%= @book.name %>
+
+<p>作者</p>
+<%= @book.author %>
+
+<p>あらすじ</p>
+<%= @book.synopsis %>
+
+<p>ジャンル</p>
+<%= @book.genre.name %>
+
+<p>値段</p>
+<%= @book.price.to_s(:delimited) %>
+
+<p>販売ステータス</p>
+<% if @book.is_active == true %>
+  販売中
+<% else %>
+  販売停止中
+<% end %>
+
+<%= link_to "編集", edit_admins_book_path(@book.id) %>
