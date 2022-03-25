@@ -10,4 +10,9 @@ class Customer < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :books, dependent: :destroy
   has_many :book_comments, dependent: :destroy
+
+  # 退会ユーザーはログインできなくする
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
 end

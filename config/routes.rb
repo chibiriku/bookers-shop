@@ -15,11 +15,14 @@ Rails.application.routes.draw do
     end
     resources :orders, only:[:index,:new,:show,:create]
     resources :addresses, only:[:index,:edit,:update,:destroy,:create]
+    resources :customers, only:[:show,:edit,:update]
   end
 
   delete '/cart_items', to: 'public/cart_items#destroy_all',as: 'all_destroy'
   post '/confirm', to: 'public/orders#confirm',as: 'confirm'
   get '/thanks', to: 'public/orders#thanks',as: 'thanks'
+  patch '/out', to: 'public/customers#out'
+  get '/quit', to: 'public/customers#quit', as: 'quit'
 
 # 管理者用
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

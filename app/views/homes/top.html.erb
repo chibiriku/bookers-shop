@@ -3,7 +3,6 @@
     <h1>新着</h1>
   </div>
   <div class="row">
-
     <% @book.each do |book| %>
 　　　<div class="col-xl-2 col-md-6">
         <% if book.image_id.attached? %>
@@ -16,6 +15,24 @@
       </div>
         <% end %>
   </div>
+
+  <div class="row mt-5">
+    <h1>人気ランキング</h1>
+  </div>
+  <div class="row">
+  <% @all_ranks.each.with_index(1) do |rank, i| %>
+　　　<div class="col-xl-2 col-md-6">
+        <% if rank.image_id.attached? %>
+          <%= image_tag rank.image_id, size: "180x180" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "180x180" %>
+        <% end %>
+        <p><%= link_to rank.name, book_path(book.id) %></p>
+        <p>¥<%= rank.price.to_s(:delimited) %></p>
+      </div>
+        <% end %>
+  </div>
+
   <div class="row">
     <div class="text-right">
 
