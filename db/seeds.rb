@@ -10,6 +10,11 @@ Admin.create!(
    password: 'testtest'
 )
 
+Customer.create!(
+    email: "a@a",
+    password: "testtest"
+    )
+
 Genre.create!(
               name: "推理",
 
@@ -22,6 +27,7 @@ Genre.create!(
 Book.create!(
               genre_id: 1,
               image_id: nil,
+              author: "佐野 零士",
               name: "白夜",
               synopsis: "本格ミステリーとは、謎解きとトリックに重きを置き、名探偵役が事件を解決する作風のこと。本作ではとある島に招かれた8人の男女と、島で出迎えた2人の召使いの全員が死に、事件が迷宮入りしかけたところですべての謎が解決します。
 もはやミステリー小説の一般教養といってもいい作品、迷ったらぜひ読んでみてください。",

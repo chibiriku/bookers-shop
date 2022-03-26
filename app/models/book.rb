@@ -3,7 +3,6 @@ class Book < ApplicationRecord
   has_one_attached :image_id
 
   belongs_to :genre
-  belongs_to :customer
   has_many :cart_items, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy

@@ -1,30 +1,32 @@
-<%= form_with model: @address, url: addresses_path, method: :post do |f| %>
-  <p>郵便番号（ハイフンなし）</p>
-  <%= f.text_field :postal_code, class: "form-control" %>
-  <p>住所</p>
-  <%= f.text_area :address, class: "form-control" %>
-  <p>宛名</p>
-  <%= f.text_field :name, class: "form-control" %>
-  <%= f.submit '新規登録', class: "btn btn-success" %>
-<% end %>
+<div class="container mt-3">
+  <%= form_with model: @address, url: addresses_path, method: :post do |f| %>
+    <p>郵便番号（ハイフンなし）</p>
+    <%= f.text_field :postal_code, class: "form-control" %>
+    <p>住所</p>
+    <%= f.text_area :address, class: "form-control" %>
+    <p>宛名</p>
+    <%= f.text_field :name, class: "form-control" %>
+    <%= f.submit '新規登録', class: "btn btn-success" %>
+  <% end %>
 
-<table class="table table-user">
-   <thread>
-    <tr>
-    <th>郵便番号</th>
-    <th>住所</th>
-    <td>宛名</td>
-    <th></th>
-    </tr>
-   </thread>
-   <tbody>
-   <% @addresses.each do |address| %>
-    <tr>
-    <td><%= address.postal_code %></td>
-    <td><%= address.address %></td>
-    <td><%= address.name %></td>
-    <td><%= link_to "編集", edit_address_path(address.id), class: "btn btn-success" %>　<%= link_to "削除", address_path(address.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></td>
-    </tr>
-   </tbody>
-   <% end %>
- </table>
+  <table class="table table-user">
+     <thread>
+      <tr>
+      <th>郵便番号</th>
+      <th>住所</th>
+      <td>宛名</td>
+      <th></th>
+      </tr>
+     </thread>
+     <tbody>
+     <% @addresses.each do |address| %>
+      <tr>
+      <td><%= address.postal_code %></td>
+      <td><%= address.address %></td>
+      <td><%= address.name %></td>
+      <td><%= link_to "編集", edit_address_path(address.id), class: "btn btn-success" %>　<%= link_to "削除", address_path(address.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></td>
+      </tr>
+     </tbody>
+     <% end %>
+   </table>
+  </div>

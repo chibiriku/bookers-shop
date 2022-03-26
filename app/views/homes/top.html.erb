@@ -27,7 +27,7 @@
         <% else %>
           <%= image_tag 'no_image', size: "180x180" %>
         <% end %>
-        <p><%= link_to rank.name, book_path(book.id) %></p>
+        <p><%= link_to rank.name, book_path(rank.id) %></p>
         <p>¥<%= rank.price.to_s(:delimited) %></p>
       </div>
         <% end %>
