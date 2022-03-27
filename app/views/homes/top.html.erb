@@ -1,43 +1,45 @@
-<div class="container mt-5">
-  <div class="row mt-5">
+<div class="row mt-5">
+  <div class="col-1">
+  </div>
+  <div class="col-xl-2">
+    <ul class="list-group">
+      <li class="list-group-item disabled" aria-disabled="true">ジャンル検索</li>
+    <% @genres.each do |genre| %>
+      <li class="list-group-item"><%= link_to genre.name, genresearch_path(content: genre.name) %></li>
+    <% end %>
+  </div>
+  <div>
     <h1>新着</h1>
-  </div>
-  <div class="row">
-    <% @book.each do |book| %>
-　　　<div class="col-xl-2 col-md-6">
-        <% if book.image_id.attached? %>
-          <%= image_tag book.image_id, size: "180x180" %>
-        <% else %>
-          <%= image_tag 'no_image', size: "180x180" %>
-        <% end %>
-        <p><%= link_to book.name, book_path(book.id) %></p>
-        <p>¥<%= book.price.to_s(:delimited) %></p>
-      </div>
-        <% end %>
-  </div>
-
-  <div class="row mt-5">
-    <h1>人気ランキング</h1>
-  </div>
-  <div class="row">
-  <% @all_ranks.each.with_index(1) do |rank, i| %>
-　　　<div class="col-xl-2 col-md-6">
-        <% if rank.image_id.attached? %>
-          <%= image_tag rank.image_id, size: "180x180" %>
-        <% else %>
-          <%= image_tag 'no_image', size: "180x180" %>
-        <% end %>
-        <p><%= link_to rank.name, book_path(rank.id) %></p>
-        <p>¥<%= rank.price.to_s(:delimited) %></p>
-      </div>
-        <% end %>
-  </div>
-
-  <div class="row">
-    <div class="text-right">
-
+    <div class="row">
+      <% @book.each do |book| %>
+        <div class="col-xl-3 col-md-6">
+          <% if book.image_id.attached? %>
+            <%= image_tag book.image_id, size: "180x180" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "180x180" %>
+          <% end %>
+          <p><%= link_to book.name, book_path(book.id) %></p>
+          <p>¥<%= book.price.to_s(:delimited) %></p>
+        </div>
+      <% end %>
     </div>
-
+    <div class="row mt-5 ">
+      <h1>人気ランキング</h1>
+    </div>
+    <div class="row">
+      <% count = 1 %>
+      <% @all_ranks.each.with_index(1) do |rank, i| %>
+        <div class="col-xl-3 col-md-6">
+          <h4><%= count %>位</h4>
+          <% if rank.image_id.attached? %>
+            <%= image_tag rank.image_id, size: "180x180" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "180x180" %>
+          <% end %>
+          <p><%= link_to rank.name, book_path(rank.id) %></p>
+          <p>¥<%= rank.price.to_s(:delimited) %></p>
+          <% count += 1 %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-</div>

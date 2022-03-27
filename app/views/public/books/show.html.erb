@@ -35,18 +35,18 @@
   </div>
 
   <% if @book.favorited_by?(current_customer) %>
-      <p>
-        <%= link_to book_favorite_path(@book), method: :delete do %>
-          ♥<%= @book.favorites.count %> いいね
-        <% end %>
-      </p>
-      <% else %>
-      <p>
-        <%= link_to book_favorites_path(@book), method: :post do %>
-          ♡<%= @book.favorites.count %> いいね
-        <% end %>
-      </p>
-    <% end %>
+    <p>
+      <%= link_to book_favorite_path(@book), method: :delete do %>
+        ♥<%= @book.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to book_favorites_path(@book), method: :post do %>
+        ♡<%= @book.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
 
   <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
       <%= f.hidden_field :book_id, :value => @book.id.to_s %>

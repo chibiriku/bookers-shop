@@ -34,6 +34,9 @@ Rails.application.routes.draw do
     resources :genres, only:[:index,:edit,:update,:create]
   end
 
+  get '/search', to: 'searches#search'
+  get '/genresearch', to: 'searches#genresearch'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 end

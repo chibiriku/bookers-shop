@@ -58,6 +58,7 @@ end
   gem 'kaminari','~> 1.1.1'
   gem "enum_help"
   gem 'dotenv-rails'
+  gem 'rails-i18n'
   group :production do
     gem 'mysql2'
   end

@@ -1,0 +1,39 @@
+<% if customer_signed_in? %>
+ <div class="container mt-3 mx-auto">
+    <div class="row">
+      <h3>検索結果"<%= @content %>"</h3>
+    </div>
+    <div class="row justify-content-center">
+      <% @book.each do |book| %>
+      <div class="col-xl-3 col-md-3">
+        <% if book.image_id.attached? %>
+          <%= image_tag book.image_id, size: "200x200" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "200x200" %>
+        <% end %>
+        <p><%= link_to book.name, book_path(book.id) %></p>
+        <p>¥<%= book.price.to_s(:delimited) %></p>
+      </div>
+      <% end %>
+    </div>
+  </div>
+<% elsif admin_signed_in? %>
+  <div class="container mt-3 mx-auto">
+    <div class="row">
+      <h3>検索結果 "<%= @content %>"</h3>
+    </div>
+    <div class="row justify-content-center">
+      <% @book.each do |book| %>
+      <div class="col-xl-3 col-md-3">
+        <% if book.image_id.attached? %>
+          <%= image_tag book.image_id, size: "200x200" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "200x200" %>
+        <% end %>
+        <p><%= link_to book.name, admin_item_path(book.id) %></p>
+        <p>¥<%= book.price.to_s(:delimited) %></p>
+      </div>
+      <% end %>
+    </div>
+　</div>
+<% end %>

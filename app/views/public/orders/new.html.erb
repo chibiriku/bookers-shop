@@ -1,22 +1,22 @@
 <%= form_with model: @order, url: confirm_path, method: :post, local: true do |f| %>
 <div class="container">
-  <div class="h-0">支払方法</div>
+  <div class="h-0"><h3>支払方法</h3></div>
   <div class="pb-2 ml-3">
     <div class="form-check">
       <%= f.radio_button :payment_method, Order.payment_methods.key(0), class: "form-check-input" %>
-      <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card], class: "form-check-label" %>
+      <h5><%= f.label :payment_method, Order.payment_methods_i18n[:credit_card], class: "form-check-label" %></h5>
     </div>
     <div class="form-check">
       <%= f.radio_button :payment_method, Order.payment_methods.key(1), class: "form-check-input" %>
-      <%= f.label :payment_method, Order.payment_methods_i18n[:transfer], class: "form-check-label"%>
+      <h5><%= f.label :payment_method, Order.payment_methods_i18n[:transfer], class: "form-check-label"%></h5>
     </div>
    </div>
-  <div class="h-0">お届け先</div>
+  <div class="h-0"><h3>お届け先</h3></div>
   <div class="ml-3">
     <div class="form-check">
       <%= f.radio_button :address_if, "3", class: "form-check-input" %>
       <label class="form-check-label" for="flexRadioDefault1">
-        ご自身の住所
+        <h5>ご自身の住所</h5>
       </label>
     </div>
     <%="#{current_customer.postcode}#{current_customer.address}"%><br>
@@ -24,19 +24,19 @@
     <div class="form-check">
       <%= f.radio_button :address_if, "4", class: "form-check-input" %>
       <label class="form-check-label" for="flexRadioDefault1">
-        登録済み住所から選択
+        <h5>登録済み住所から選択</h5>
       </label>
     </div>
     <%= f.select :address_id, options_from_collection_for_select(current_customer.addresses, :id, :address_display) %>
     <div class="form-check">
       <%= f.radio_button :address_if, "5", class: "form-check-input" %>
       <label class="form-check-label" for="flexRadioDefault1">
-        新しいお届け先
+        <h5>新しいお届け先</h5>
       </label>
     </div>
     <div class="row">
       <div class="col-3">
-        郵便番号（ハイフンなし）
+        <h5>郵便番号（ハイフンなし）</h5>
       </div>
       <div class="col-3">
         <%= f.text_field :postal_code, class: "form-control" %>
@@ -44,7 +44,7 @@
     </div>
     <div class="row">
       <div class="col-3">
-        住所
+        <h5>住所</h5>
       </div>
       <div class="col-8">
         <%= f.text_field :address, class: "form-control" %>
@@ -52,7 +52,7 @@
     </div>
     <div class="row">
       <div class="col-3">
-        宛名
+        <h5>宛名</h5>
       </div>
       <div class="col-3">
         <%= f.text_field :name, class: "form-control" %>

@@ -1,0 +1,17 @@
+<div class="container mt-3 mx-auto">
+  <div class="row">
+    <h1>商品一覧</h1>
+  </div>
+<div class="row justify-content-center">
+    <div class="col-xl-3 col-md-3">
+      <% @books.each do |book| %>
+        <% if book.image_id.attached? %>
+          <%= image_tag book.image_id, size: "200x200" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "200x200" %>
+        <% end %>
+        <p><%= link_to book.name, book_path(book.id) %></p>
+        <p>¥<%= book.price.to_s(:delimited) %></p>
+      <% end %>
+    </div>
+</div>

@@ -19,4 +19,8 @@ class Book < ApplicationRecord
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)
   end
+  #検索機能
+  def self.search_for(content)
+    Book.where('name LIKE ?', '%' + content + '%')
+  end
 end
