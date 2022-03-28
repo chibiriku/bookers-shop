@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   get '/thanks', to: 'public/orders#thanks',as: 'thanks'
   patch '/out', to: 'public/customers#out'
   get '/quit', to: 'public/customers#quit', as: 'quit'
+  get '/rank', to: 'public/books#rank', as: 'rank'
+  get '/populer', to: 'public/books#populer', as: 'populer'
 
 # 管理者用
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

@@ -1,0 +1,23 @@
+  <div class="container">
+    <h1>新着</h1>
+    <div class="row">
+      <% @book.each do |book| %>
+        <div class="col-xl-3 col-md-6">
+          <% if book.image_id.attached? %>
+            <%= image_tag book.image_id, size: "180x180" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "180x180" %>
+          <% end %>
+          <p><%= link_to book.name, book_path(book.id) %></p>
+          <p>¥<%= book.price.to_s(:delimited) %></p>
+        </div>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col-xl-3 col-md-6">
+      </div>
+      <div class="col-xl-3 col-md-6">
+        <%= paginate @book %>
+      </div>
+    </div>
+  </div>

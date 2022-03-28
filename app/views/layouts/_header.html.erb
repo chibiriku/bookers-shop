@@ -15,10 +15,13 @@
          </li>
          <% elsif customer_signed_in? %>
           <li>
-           <%= link_to customer_path(current_customer) do %><span class="text-light text-white nav-link"><i class="fa-regular fa-user"></i>マイページ</span><% end %>
+           <%= link_to customer_path(current_customer) do %><span class="text-light text-white nav-link"><i class="fas fa-regular fa-user"></i>マイページ</span><% end %>
          </li>
          <li>
-           <%= link_to cart_items_path do %><span class="text-light text-white nav-link"><i class="fa-solid fa-cart-shopping"></i>カート</span><% end %>
+           <%= link_to orders_path do %><span class="text-light text-white nav-link"><i class="fas fa-book"></i>本棚</span><% end %>
+         </li>
+         <li>
+           <%= link_to cart_items_path do %><span class="text-light text-white nav-link"><i class="fas fa-shopping-cart"></i>カート</span><% end %>
          </li>
          <li>
            <%= link_to destroy_customer_session_path, method: :delete do %><span class="text-light text-white nav-link"><i class="fas fa-sign-out-alt"></i>ログアウト</span><% end %>
@@ -28,7 +31,7 @@
            <%= link_to new_customer_registration_path do %><span class="text-light text-white nav-link"><i class="fas fa-user-plus"></i>新規登録</span><% end %>
          </li>
          <li>
-           <%= link_to new_customer_session_path do %><span class="text-light text-white nav-link"><i class="fas fa-sign-in"></i>ログイン</span><% end %>
+           <%= link_to new_customer_session_path do %><span class="text-light text-white nav-link"><i class="fas fa-sign-in-alt"></i>ログイン</span><% end %>
          </li>
          <% end %>
       </ul>

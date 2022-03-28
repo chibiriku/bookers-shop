@@ -1,2 +1,0 @@
-module Asmin::BooksHelper
-end
