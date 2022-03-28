@@ -16,7 +16,7 @@
           <% if book.image_id.attached? %>
             <%= image_tag book.image_id, size: "180x180" %>
           <% else %>
-            <%= image_tag 'no_image', size: "180x180" %>
+            <%= image_tag 'no_image.jpg', size: "180x180" %>
           <% end %>
           <p><%= link_to book.name, book_path(book.id) %></p>
           <p>¥<%= book.price.to_s(:delimited) %></p>
