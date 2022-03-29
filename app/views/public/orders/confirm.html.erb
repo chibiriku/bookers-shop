@@ -6,8 +6,8 @@
         <thead　class="thead-dark">
           <tr>
             <th scope="col">題名</th>
-            <th scope="col">単価</th>
             <th scope="col">数量</th>
+            <th scope="col">単価</th>
             <th scope="col">小計</th>
           </tr>
         </thead>
@@ -20,6 +20,9 @@
           </td>
           <td>
             <%= cart_item.amount %>
+          </td>
+          <td>
+            <%= cart_item.book.price %>
           </td>
           <td>
             <%= cart_item.subtotal.to_s(:delimited) %>

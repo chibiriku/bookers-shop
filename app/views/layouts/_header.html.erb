@@ -1,6 +1,10 @@
 <nav class="navbar navbar-expand-lg bg-dark bg-gradient text-white">
    <div class="container">
+    <% if admin_signed_in? %>
+     <a class="navbar-brand navbar-left" href="/admins/books"><%= image_tag('bookers_shop.png') %></a>
+    <% else %>
      <a class="navbar-brand navbar-left" href="/"><%= image_tag('bookers_shop.png') %></a>
+    <% end %>
      <nav class="d-flex align-items-center">
        <ul class="nav navbar-nav navbar-right">
          <% if admin_signed_in? %>
@@ -8,7 +12,7 @@
            <%= link_to admins_customers_path do %><span class="text-light text-white nav-link"><i class="fas fa-regular fa-user"></i>会員一覧</span><% end %>
          </li>
          <li class="nav-item">
-           <%= link_to admins_books_path do %><span class="text-light text-white nav-link"><i class="fas fa-book"></i>商品一覧</span><% end %>
+           <%= link_to new_admins_book_path do %><span class="text-light text-white nav-link"><i class="fas fa-book"></i>商品投稿</span><% end %>
          </li>
          <li>
            <%= link_to admins_genres_path do %><span class="text-light text-white nav-link"><i class="fas fa-tree"></i>ジャンル一覧</span><% end %>
@@ -38,7 +42,10 @@
          </li>
          <% end %>
       </ul>
-      <%= render 'searches/form', book: @book %>
+      <% if admin_signed_in? %>
+      <% else %>
+       <%= render 'searches/form', book: @book %>
+      <% end %>
     </nav>
   </div>
 </nav>
