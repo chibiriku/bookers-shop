@@ -3,7 +3,7 @@
   <% if @book.image_id.attached? %>
     <%= image_tag @book.image_id, size: "200x200" %>
   <% else %>
-    <%= image_tag 'no_image.', size: "200x200" %>
+    <%= image_tag 'no_image.jpg', size: "200x200" %>
   <% end %>
   <h4>タイトル</h4>
   <p><%= @book.name %></p>
