@@ -11,6 +11,10 @@
           <td><%= @customer.family_name %><%= @customer.first_name %></td>
         </tr>
         <tr>
+          <td>ニックネーム</td>
+          <td><%= @customer.name %></td>
+        </tr>
+        <tr>
           <td>郵便番号</td>
           <td><%= @customer.postcode %></td>
         </tr>
@@ -33,4 +37,3 @@
     <%= link_to "配送先一覧", addresses_path(@customer.id), class: "btn btn-primary" %>
   </div>
 
-  

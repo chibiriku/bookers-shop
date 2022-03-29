@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :cart_items, only:[:index, :create, :update, :destroy]
     resources :books, only:[:index, :show] do
-      resources :book_comments, only: [:create, :destro]
+      resources :book_comments, only: [:create, :destroy]
       resources :favorites, only: [:create, :destroy]
     end
     resources :orders, only:[:index,:new,:show,:create]
@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :books, only:[:index,:show,:edit,:new,:update,:create]
     resources :genres, only:[:index,:edit,:update,:create]
+    resources :customers, only:[:index, :update]
   end
 
   get '/search', to: 'searches#search'

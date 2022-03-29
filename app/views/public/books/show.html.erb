@@ -1,58 +1,63 @@
+
 <div class="container mt-3">
   <% if @book.image_id.attached? %>
     <%= image_tag @book.image_id, size: "200x200" %>
   <% else %>
-    <%= image_tag 'no_image', size: "200x200" %>
+    <%= image_tag 'no_image.', size: "200x200" %>
   <% end %>
-
-  <div>タイトル</div>
+  <h4>タイトル</h4>
   <p><%= @book.name %></p>
-
-  <div>作者</div>
+  <h4>作者</h4>
   <p><%= @book.author %></p>
-
-  <div>あらすじ</div>
+  <h4>あらすじ</h4>
   <p><%= @book.synopsis %></p>
-
-  <div>ジャンル</div>
+  <h4>ジャンル</h4>
   <p><%= @book.genre.name %><p>
-
-  <div>値段</div>
-  <p><%= @book.price.to_s(:delimited) %></p>
-
+  <h4>値段</h4>
+  <p><%= @book.price.to_s(:delimited) %>円</p>
   <div>
-    <p>コメント件数：<%= @book.book_comments.count %></p>
+    <h4>コメント一覧</h4>
     <% @book.book_comments.each do |book_comment| %>
-      <%= book_comment.customer.name %>
-      <%= book_comment.created_at.strftime('%Y/%m/%d') %><%= book_comment.comment %>
+      <%= book_comment.created_at.strftime('%Y/%m/%d') %>
+      <div>
+        <%= book_comment.customer.name %>さん：
+        <%= book_comment.comment %>
+        <% if book_comment.customer == current_customer %>
+        　<%= link_to "削除", book_book_comment_path(book_comment.book, book_comment), method: :delete %>
+      　<% end %>
+      </div>
     <% end %>
   </div>
-  <div>
-    <%= form_with model: [@book, @book_comment], url:book_book_comments_path(@book.id) do |f| %>
-      <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-      <%= f.submit "送信する" %>
-    <% end %>
-  </div>
-
-  <% if @book.favorited_by?(current_customer) %>
-    <p>
-      <%= link_to book_favorite_path(@book), method: :delete do %>
-        ♥<%= @book.favorites.count %> いいね
+  <div class="form-group">
+    <% if customer_signed_in? %>
+      <%= form_with model: [@book, @book_comment], url:book_book_comments_path(@book.id) do |f| %>
+        <%= f.text_area :comment, rows: '5', placeholder: "コメント", class: "form-control" %>
+        <%= f.submit "送信する", class: "btn btn-primary"%>
       <% end %>
-    </p>
+    <% end %>
+  </div>
+  <% if customer_signed_in? %>
+    <% if @book.favorited_by?(current_customer) %>
+      <p>
+        <%= link_to book_favorite_path(@book), method: :delete do %>
+          ♥<%= @book.favorites.count %> いいね
+        <% end %>
+      </p>
     <% else %>
-    <p>
-      <%= link_to book_favorites_path(@book), method: :post do %>
-        ♡<%= @book.favorites.count %> いいね
-      <% end %>
-    </p>
+      <p>
+        <%= link_to book_favorites_path(@book), method: :post do %>
+          ♡<%= @book.favorites.count %> いいね
+        <% end %>
+      </p>
+    <% end %>
   <% end %>
-
-  <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
-      <%= f.hidden_field :book_id, :value => @book.id.to_s %>
-    <p>数量
-      <%= f.select :amount, *[1..10] %>
-    </p>
-      <%= f.submit 'カートに入れる', class: "btn btn-success" %>
+  <% if customer_signed_in? %>
+    <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
+        <%= f.hidden_field :book_id, :value => @book.id.to_s %>
+      <p>数量
+        <%= f.select :amount, *[1..10] %>
+      </p>
+        <%= f.submit 'カートに入れる', class: "btn btn-success" %>
+    <% end %>
   <% end %>
 </div>

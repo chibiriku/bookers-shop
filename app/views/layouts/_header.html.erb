@@ -5,10 +5,13 @@
        <ul class="nav navbar-nav navbar-right">
          <% if admin_signed_in? %>
          <li class="nav-item">
-           <%= link_to admins_books_path do %><span class="text-light text-white nav-link"><i class="fa-solid fa-cake-candles"></i>商品一覧</span><% end %>
+           <%= link_to admins_customers_path do %><span class="text-light text-white nav-link"><i class="fas fa-regular fa-user"></i>会員一覧</span><% end %>
+         </li>
+         <li class="nav-item">
+           <%= link_to admins_books_path do %><span class="text-light text-white nav-link"><i class="fas fa-book"></i>商品一覧</span><% end %>
          </li>
          <li>
-           <%= link_to admins_genres_path do %><span class="text-light text-white nav-link"><i class="fas fa-ice-cream"></i>ジャンル一覧</span><% end %>
+           <%= link_to admins_genres_path do %><span class="text-light text-white nav-link"><i class="fas fa-tree"></i>ジャンル一覧</span><% end %>
          </li>
          <li>
            <%= link_to destroy_admin_session_path, method: :delete do %><span class="text-light text-white nav-link"><i class="fas fa-sign-out-alt"></i>ログアウト</span><% end %>

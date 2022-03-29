@@ -1,14 +1,21 @@
-<% @books.each do |book| %>
-
-<%= book.id %>
-<%= link_to book.name, admins_book_path(book.id) %>
-<%= book.author %>
-<%= book.price.to_s(:delimited) %>
-<%= book.genre.name %>
-
-<% if book.is_active == true %>
-    販売中
-  <% else %>
-   販売停止中
-  <% end %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <% @books.each do |book| %>
+      <div class="col-xl-3 col-md-6">
+        <% if book.image_id.attached? %>
+          <%= image_tag book.image_id, size: "180x180" %>
+        <% else %>
+          <%= image_tag 'no_image.jpg', size: "180x180" %>
+        <% end %>
+        <p><%= link_to book.name, admins_book_path(book.id) %></p>
+        <p>¥<%= book.price.to_s(:delimited) %></p>
+        <p><%= book.genre.name %></p>
+        <% if book.is_active == true %>
+          販売中
+        <% else %>
+          販売停止中
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
-  
+
   def show
     @customer = current_customer
   end
@@ -32,6 +32,6 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:family_name, :first_name, :postcode, :address, :phonenumber, :email)
+    params.require(:customer).permit(:family_name, :first_name, :postcode, :address, :phonenumber, :email, :name)
   end
 end

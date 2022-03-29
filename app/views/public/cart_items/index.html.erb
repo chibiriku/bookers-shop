@@ -6,12 +6,12 @@
    <table class="table">
     <thead class="thead-dark">
       <tr>
-         <th scope="col"></th>
-         <th scope="col">本のタイトル</th>
-          <th scope="col">単価</th>
-          <th scope="col">数量</th>
-          <th scope="col">小計</th>
-          <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col">本のタイトル</th>
+        <th scope="col">単価</th>
+        <th scope="col">数量</th>
+        <th scope="col">小計</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <% total_price=0 %>
@@ -29,7 +29,7 @@
       <td>
         <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch, local:true do |f| %>
           <%= f.select:amount,*[1..10] %>
-          <%= f.submit "変更" %>
+          <%= f.submit "変更", class: "btn btn-success" %>
         <% end %>
       </td>
       <td>
