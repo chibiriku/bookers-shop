@@ -1,0 +1,2 @@
+<!--$('.favorite-<%#= @favorite.book_id %>').html("<%#= j(render '/public/favorites/btn',  book: @favorite.book ) %>")-->
+$('#favorite_buttons_<%= @book.id %>').html("<%= j(render '/public/favorites/btn',  book: @book ) %>")

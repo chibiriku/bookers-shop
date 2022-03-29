@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :cart_items, only:[:index, :create, :update, :destroy]
     resources :books, only:[:index, :show] do
       resources :book_comments, only: [:create, :destroy]
-      resources :favorites, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
     end
     resources :orders, only:[:index,:new,:show,:create]
     resources :addresses, only:[:index,:edit,:update,:destroy,:create]
